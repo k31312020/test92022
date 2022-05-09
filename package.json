@@ -1,0 +1,17 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "part1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "part1": "node part1.js",
+    "part2": "node part2.js",
+    "part3": "node part3.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "asciichart": "^1.5.25"
+  }
+}
