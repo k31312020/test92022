@@ -1,4 +1,4 @@
-const input = '23245';
+const inputs = ['111110', '23245', '33245', '11235888']
 
 const convertInput = (input) => {
     input = input.split('');
@@ -8,25 +8,33 @@ const convertInput = (input) => {
 
 const getPetersLastNumber = (input) => {
     for(let i = 0; i < input.length; i++) {
-        reduceNumber(input, i);
+        if (input[i] > input[i+1]) {
+            input[i]--;
+            reduceNumber(input, i+1);
+            checkPreviousDigits(input, i);
+            break;
+        }
     }
     return input;
 }
 
 const reduceNumber = (input, i) => {
-    while (input[i] < input[i-1]) {
-        if (input[i] === 0) {
-            input[i] = 9;
-            for(let j = i-1; i > 0; i--) {
-                if(input[j] > input[j-1]) {
-                    input[j]--;
-                }
-            }
-        } else {
-            input[i]--;
-        }
-        console.log(input)
+    while (i < input.length) {
+        input[i] = 9;
+        i++;
     }
 }
 
-console.log(getPetersLastNumber(convertInput(input)))
+const checkPreviousDigits = (input, i) => {
+    for(let j = i; j > 0; j--) {
+        if (input[j-1] > input[j]) {
+            input[j] = 9;
+            input[j-1]--;
+        }
+    }
+}
+
+for(let i = 0; i < inputs.length; i++) {
+    console.log(getPetersLastNumber(convertInput(inputs[i])));
+}
+
